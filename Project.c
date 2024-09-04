@@ -36,6 +36,8 @@ void setup()
     sendCommand("AT+CWMODE=1",5,"OK"); 
     sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK"); 
 } 
+
+
 void loop()
 { 
     String 
@@ -52,6 +54,9 @@ void loop()
     esp8266.println(getData);delay(1500);countTrueCommand++; 
     sendCommand("AT+CIPCLOSE=0",5,"OK"); 
 } 
+
+
+
 String getTemperatureValue()
 {    
     dhtObject.read(dht_apin); 
@@ -64,6 +69,9 @@ String getTemperatureValue()
     delay(100); 
     return String(temp);    
 } 
+
+
+
 String getHumidityValue()
 { 
     dhtObject.read(dht_apin); 
@@ -76,6 +84,8 @@ String getHumidityValue()
     delay(100); 
     return String(humidity);  
 } 
+
+
 String getldr()  
 { 
     int ldrValue = analogRead(ldrPin); 
@@ -84,6 +94,8 @@ String getldr()
     lcd.setCursor(0, 1); 
     lcd.print(ldrValue); 
 } 
+
+
 // You may need to adjust the threshold value based on your ambient light conditions 
 int threshold = 500;  // Adjust this value based on your setup 
 delay(1000);  // Adjust the delay as needed for your application 
@@ -95,6 +107,8 @@ void sendCommand(String command, int maxTime, char readReplay[])
     Serial.print(command); 
     Serial.print(" "); 
 }
+
+
 while(countTimeCommand < (maxTime*1)) 
 { 
  
